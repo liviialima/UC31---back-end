@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos - Senac</title>
+
+    <link href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcHcPKhp5sDGj1WwEbf_jIuS9ed7ITX2kFEQ&s" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefefe;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #004080; 
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        header img {
+            max-width: 120px;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+        form {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border: 3px solid #ff7f11; 
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #004080;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #ff7f11;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e56b0d;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #004080;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <img src="{{ url_for('static', filename='Logo-Senac-5.png') }}" alt="Logo Senac">
+    <h1>Cadastro de Alunos - Senac</h1>
+    </header>
+    <form method="POST" action="/">
+        <label for="Nome">Nome Completo:</label>
+        <input type="text" name="Nome" required>
+
+        <label for="Email">E-mail:</label>
+        <input type="email" name="Email" required>
+
+        <label for="Telefone">Telefone:</label>
+        <input type="text" name="Telefone" required>
+
+        <label for="CPF">CPF:</label>
+        <input type="text" name="CPF" required>
+
+        <label for="Cidade">Cidade:</label>
+        <input type="text" name="Cidade" required>
+
+        <label for="Estado">Estado:</label>
+        <input type="text" name="Estado" maxlength="2" required>
+
+        <label for="Curso">Curso:</label>
+        <input type="text" name="Curso" required>
+
+        <label for="Idade">Idade:</label>
+        <input type="number" name="Idade" required>
+
+        <label for="Senha">Senha:</label>
+        <input type="password" name="Senha" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <footer>
+        <p>Senac - Serviço Nacional de Aprendizagem Comercial</p>
+    </footer>
+</body>
+</html>
