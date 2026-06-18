@@ -1,0 +1,323 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fafafa, #f0f0f0);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 4px solid #e67e22;
+}
+
+/* Container do cardápio */
+.cardapio {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Título da seção */
+.cardapio h2 {
+    text-align: center;
+    color: #e67e22;
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+/* Itens do cardápio */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.item:hover {
+    background: #f9f2ec;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Nome do salgado */
+.item .nome {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Preço */
+.item .preco {
+    font-size: 18px;
+    font-weight: bold;
+    color: #277cae;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #00284f;
+    color: #ecf0f1;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 4px solid #22a8e6;
+}
+/* Controls: busca e filtros */
+.cardapio .controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cardapio .buscar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cardapio .buscar input[type="search"] {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 260px;
+    font-size: 14px;
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.cardapio .buscar input[type="search"]:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 4px 18px rgba(230,126,34,0.12);
+}
+
+/* Filtros por categoria */
+.cardapio .filtros {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.cardapio .filtros button {
+    background: #eef6fb;
+    color: #277cae;
+    border: 1px solid #d7eefb;
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background .18s ease, transform .12s ease;
+}
+
+.cardapio .filtros button:hover,
+.cardapio .filtros button.active {
+    background: #e3f2fb;
+    transform: translateY(-2px);
+}
+
+/* Grid de itens */
+.cardapio .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+/* Cada produto/item */
+.cardapio .produto {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ffffff, #fbfbfb);
+    border: 1px solid #f0f0f0;
+    transition: box-shadow .18s ease, transform .12s ease;
+}
+
+.cardapio .produto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10,20,30,0.06);
+}
+
+/* Miniatura */
+.cardapio .produto .thumb {
+    width: 84px;
+    height: 64px;
+    flex: 0 0 84px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardapio .produto .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Informações principais */
+.cardapio .produto .info {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.cardapio .produto .nome {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardapio .produto .descricao {
+    font-size: 13px;
+    color: #66788a;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tags (ex: vegetariano, novo) */
+.cardapio .produto .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.cardapio .produto .badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #fff7ed;
+    color: #e67e22;
+    border: 1px solid rgba(230,126,34,0.08);
+}
+
+/* Preço e ações */
+.cardapio .produto .meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    margin-left: 8px;
+    flex: 0 0 auto;
+}
+
+.cardapio .produto .preco {
+    font-size: 18px;
+    font-weight: 700;
+    color: #277cae;
+}
+
+.cardapio .produto .acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.cardapio .produto .acoes button {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.cardapio .produto .acoes .btn-pequeno {
+    background: #277cae;
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(39,124,174,0.12);
+}
+
+.cardapio .produto .acoes .btn-secundario {
+    background: transparent;
+    color: #2c3e50;
+    border: 1px solid #e6eef6;
+}
+
+/* Mensagem quando vazio */
+.cardapio .vazio {
+    text-align: center;
+    color: #8a99a8;
+    padding: 24px;
+    font-size: 15px;
+}
+
+/* Responsividade */
+@media (max-width: 880px) {
+    .cardapio {
+        padding: 20px;
+        margin: 20px;
+    }
+    .cardapio .grid {
+        grid-template-columns: 1fr;
+    }
+    .cardapio .buscar input[type="search"] {
+        width: 100%;
+        max-width: 420px;
+    }
+    .cardapio .produto .thumb {
+        width: 72px;
+        height: 56px;
+        flex: 0 0 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 22px;
+        font-size: 26px;
+    }
+    .cardapio {
+        margin: 12px;
+        padding: 16px;
+        border-radius: 10px;
+    }
+    .cardapio .controls {
+        gap: 8px;
+    }
+    .cardapio .produto {
+        gap: 10px;
+        padding: 12px;
+    }
+    .cardapio .produto .meta {
+        align-items: flex-end;
+    }
+}
+
+/* Impressão limpa */
+@media print {
+    body { background: #fff; color: #000; }
+    .cardapio { box-shadow: none; border: none; }
+    footer, .controls { display: none; }
+}

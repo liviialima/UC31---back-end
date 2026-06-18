@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>🍰 Cardápio de Salgados <h1>
+
+        document.querySelector('h1').textContent = '🥐 Cardápio de Salgados';
+        const itens = [
+            '1 - Coxinha — R$ 6,00',
+            '2 - Kibe — R$ 5,00',
+            '3 - Empada — R$ 5,00',
+            '4 - Pastel de carne — R$ 6,00',
+            '5 - Pastel de queijo — R$ 5,00',
+            '6 - Quibe assado — R$ 7,00',
+            '7 - Esfiha — R$ 5,00',
+            '8 - Enroladinho de salsicha — R$ 4,00',
+            '9 - Salgadinho de frango — R$ 6,00',
+            '10 - Bolinha de queijo — R$ 5,00',
+            '11 - Risoles — R$ 6,00',
+            '12 - Pão de queijo — R$ 4,00',
+            '13 - Empanada — R$ 6,00',
+            '14 - Mini pizza salgada — R$ 7,00',
+            '15 - Torta salgada (fatia) — R$ 8,00',
+            '16 - Croquete — R$ 4,00',
+            '17 - Pastel de palmito — R$ 6,00',
+            '18 - Sanduíche natural — R$ 9,00',
+            '19 - Mini quiche — R$ 8,00',
+            '20 - Pão de batata — R$ 5,00',
+            '21 - Wrap pequeno — R$ 9,00',
+            '22 - Bolinho de bacalhau — R$ 10,00',
+            '23 - Salgado integral — R$ 7,00',
+            '24 - Mini coxinha vegana — R$ 6,00'
+        ];
+        const ul = document.querySelector('.menu ul');
+        if (ul) ul.innerHTML = itens.map(i => `<li>${i}</li>`).join('');
+
+    // mantém comportamento anterior para o botão de finalizar
+    function finalizar(){
+        alert('Integração com Python aqui!');
+    }
+
+    // aplica a mudança imediatamente
+    atualizarParaSalgados();
+    document.addEventListener('DOMContentLoaded', atualizarParaSalgados);
+    </script>
+</body>
+</html>
