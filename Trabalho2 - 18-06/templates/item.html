@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ item[0] }}</title>
+
+<style>
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f5f5f5;
+    margin:0;
+}
+
+.container{
+    max-width:700px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#2c3e50;
+}
+
+.preco{
+    color:#277cae;
+    font-size:24px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.botoes{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    text-decoration:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.favorito{
+    background:#e67e22;
+}
+
+.carrinho{
+    background:#27ae60;
+}
+
+.voltar{
+    background:#2c3e50;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>{{ item[0] }}</h1>
+
+    <p>
+        Delicioso salgado preparado com ingredientes selecionados.
+    </p>
+
+    <div class="preco">
+        R$ {{ item[1] }},00
+    </div>
+
+    <div class="botoes">
+
+        <a href="{{ url_for('favoritar', item_id=item_id) }}" class="btn favorito">
+            ⭐ Favoritar
+        </a>
+
+        <a href="{{ url_for('adicionar_carrinho', item_id=item_id) }}" class="btn carrinho">
+            🛒 Adicionar ao Carrinho
+        </a>
+
+        <a href="{{ url_for('index') }}" class="btn voltar">
+            ← Voltar
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

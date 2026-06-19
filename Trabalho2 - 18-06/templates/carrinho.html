@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho</title>
+
+<style>
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f5f5f5;
+    margin:0;
+}
+
+header{
+    background:#27ae60;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    max-width:900px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.nome{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.preco{
+    color:#277cae;
+    font-weight:bold;
+}
+
+.total{
+    text-align:right;
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+    color:#27ae60;
+}
+
+.botoes{
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    text-decoration:none;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.voltar{
+    background:#2c3e50;
+}
+
+.finalizar{
+    background:#27ae60;
+}
+</style>
+</head>
+<body>
+
+<header>
+🛒 Meu Carrinho
+</header>
+
+<div class="container">
+
+{% set total = namespace(valor=0) %}
+
+{% if items %}
+
+    {% for id,item in items %}
+
+        <div class="item">
+            <span class="nome">{{ item[0] }}</span>
+            <span class="preco">R$ {{ item[1] }},00</span>
+        </div>
+
+        {% set total.valor = total.valor + item[1] %}
+
+    {% endfor %}
+
+    <div class="total">
+        Total: R$ {{ total.valor }},00
+    </div>
+
+{% else %}
+
+    <h3>Seu carrinho está vazio.</h3>
+
+{% endif %}
+
+<div class="botoes">
+    <a href="{{ url_for('index') }}" class="btn voltar">
+        ← Continuar Comprando
+    </a>
+
+    <a href="#" class="btn finalizar">
+        ✔ Finalizar Pedido
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,51 +1,183 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cardápio de Salgados</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fafafa, #f0f0f0);
+            margin: 0;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 32px;
+            font-weight: bold;
+            border-bottom: 4px solid #e67e22;
+        }
+
+        .cardapio {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #e67e22;
+            margin-bottom: 25px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 15px;
+        }
+
+        .produto {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            background: #fafafa;
+            transition: .3s;
+        }
+
+        .produto:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,.1);
+        }
+
+        .nome {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .preco {
+            color: #277cae;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .acoes {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .favorito {
+            background: #e67e22;
+        }
+
+        .detalhes {
+            background: #277cae;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background: #2c3e50;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        footer {
+            text-align: center;
+            background: #00284f;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-    <h1>🍰 Cardápio de Salgados <h1>
 
-        document.querySelector('h1').textContent = '🥐 Cardápio de Salgados';
-        const itens = [
-            '1 - Coxinha — R$ 6,00',
-            '2 - Kibe — R$ 5,00',
-            '3 - Empada — R$ 5,00',
-            '4 - Pastel de carne — R$ 6,00',
-            '5 - Pastel de queijo — R$ 5,00',
-            '6 - Quibe assado — R$ 7,00',
-            '7 - Esfiha — R$ 5,00',
-            '8 - Enroladinho de salsicha — R$ 4,00',
-            '9 - Salgadinho de frango — R$ 6,00',
-            '10 - Bolinha de queijo — R$ 5,00',
-            '11 - Risoles — R$ 6,00',
-            '12 - Pão de queijo — R$ 4,00',
-            '13 - Empanada — R$ 6,00',
-            '14 - Mini pizza salgada — R$ 7,00',
-            '15 - Torta salgada (fatia) — R$ 8,00',
-            '16 - Croquete — R$ 4,00',
-            '17 - Pastel de palmito — R$ 6,00',
-            '18 - Sanduíche natural — R$ 9,00',
-            '19 - Mini quiche — R$ 8,00',
-            '20 - Pão de batata — R$ 5,00',
-            '21 - Wrap pequeno — R$ 9,00',
-            '22 - Bolinho de bacalhau — R$ 10,00',
-            '23 - Salgado integral — R$ 7,00',
-            '24 - Mini coxinha vegana — R$ 6,00'
-        ];
-        const ul = document.querySelector('.menu ul');
-        if (ul) ul.innerHTML = itens.map(i => `<li>${i}</li>`).join('');
+<header>
+    🥐 Cardápio de Salgados
+</header>
 
-    // mantém comportamento anterior para o botão de finalizar
-    function finalizar(){
-        alert('Integração com Python aqui!');
-    }
+<nav>
+    <a href="{{ url_for('favoritos') }}">⭐ Favoritos</a>
+    <a href="{{ url_for('local_view') }}">🛒 Local</a>
+</nav>
 
-    // aplica a mudança imediatamente
-    atualizarParaSalgados();
-    document.addEventListener('DOMContentLoaded', atualizarParaSalgados);
-    </script>
+<div class="cardapio">
+    <h2>Escolha seus salgados</h2>
+
+    <div class="grid">
+
+        {% for id, item in menu.items() %}
+
+        <div class="produto">
+
+            <div class="nome">
+                {{ item[0] }}
+            </div>
+
+            <div class="preco">
+                R$ {{ item[1] }},00
+            </div>
+
+            <div class="acoes">
+                <a href="{{ url_for('item', item_id=id) }}" class="btn detalhes">
+                    Ver
+                </a>
+
+                <a href="{{ url_for('favoritar', item_id=id) }}" class="btn favorito">
+                    Favoritar
+                </a>
+
+                <a href="{{ url_for('adicionar_carrinho', item_id=id) }}">
+    🛒 Adicionar ao Carrinho
+</a>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+<footer>
+    Cardápio Online © 2026
+</footer>
+
+
+    <nav>
+    <a href="{{ url_for('favoritos') }}">⭐ Favoritos</a>
+    <a href="{{ url_for('carrinho') }}">🛒 Carrinho</a>
+    <a href="{{ url_for('conta') }}">📄 Conta</a>
+     </nav>
+
 </body>
 </html>
+```
